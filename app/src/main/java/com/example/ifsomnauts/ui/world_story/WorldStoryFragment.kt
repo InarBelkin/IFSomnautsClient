@@ -27,7 +27,8 @@ class WorldStoryFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProvider(this).get(WorldStoryViewModel::class.java)
         _binding = WorldStoryFragmentBinding.inflate(inflater, container, false);
-        val fm = requireActivity().supportFragmentManager;
+
+        val fm = childFragmentManager;
         val adapter = FragmentWsAdapter(fm, lifecycle);
         binding.ViewPagerWs.isUserInputEnabled = false;
         binding.ViewPagerWs.adapter = adapter;
