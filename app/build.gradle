@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -51,8 +53,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:28.4.2')
-
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    //Hilt
+    implementation 'com.google.dagger:hilt-android:2.39.1'
+    kapt 'com.google.dagger:hilt-compiler:2.39.1'
+}
 
 
+kapt {
+    correctErrorTypes true
 }
