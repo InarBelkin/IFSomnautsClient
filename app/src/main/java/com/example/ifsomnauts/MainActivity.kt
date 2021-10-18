@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ifsomnauts.databinding.ActivityMainBinding
+
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

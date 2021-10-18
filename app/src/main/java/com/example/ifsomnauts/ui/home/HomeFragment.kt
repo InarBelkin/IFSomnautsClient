@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -33,7 +34,7 @@ class HomeFragment : Fragment() {
 
 
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         val root: View = binding.root
 
         homeViewModel.cat = "changed"

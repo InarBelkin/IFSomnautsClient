@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.example.ifsomnauts.R
+import com.example.ifsomnauts.databinding.EncounterWsFragmentBinding
 
 class EncounterWsFragment : Fragment() {
 
@@ -15,12 +17,18 @@ class EncounterWsFragment : Fragment() {
     }
 
     private lateinit var viewModel: EncounterWsViewModel
+    private lateinit var binding:EncounterWsFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.encounter_ws_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.encounter_ws_fragment, container, false);
+
+
+
+
+        return binding.root;
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
