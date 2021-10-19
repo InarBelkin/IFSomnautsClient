@@ -7,10 +7,12 @@
 
     <TextView
         android:id="@+id/encounter_name"
-        android:text="какая-то встреча"
+        android:text="Какая-то встреча"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
 
 
 </LinearLayout>

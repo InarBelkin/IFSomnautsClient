@@ -25,7 +25,7 @@ class WorldStoryFragment : Fragment() {
         _binding = WorldStoryFragmentBinding.inflate(inflater, container, false);
 
         val fm = childFragmentManager;
-        val adapter = FragmentWsAdapter(fm, lifecycle);
+        val adapter = FragmentWsAdapter(fm, lifecycle) { a -> this.setCurrentPage(a) };
         binding.ViewPagerWs.isUserInputEnabled = false;
         binding.ViewPagerWs.adapter = adapter;
 
@@ -49,7 +49,13 @@ class WorldStoryFragment : Fragment() {
             }
 
         })
+
+        var method = { a:Int->setCurrentPage(a) }
         return binding.root;
+    }
+
+    public fun setCurrentPage(number:Int){
+        binding.ViewPagerWs.currentItem = number;
     }
 
     override fun onDestroyView() {

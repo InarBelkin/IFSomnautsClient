@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ifsomnauts.R
 import com.example.ifsomnauts.models.Skill
 
-class SkillsRecyclerAdapter(private val characteristics: ArrayList<Skill>) :
+class SkillsRecyclerAdapter(private val skills: ArrayList<Skill>) :
     RecyclerView.Adapter<SkillsRecyclerAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,7 +23,7 @@ class SkillsRecyclerAdapter(private val characteristics: ArrayList<Skill>) :
     }
 
     override fun getItemCount(): Int {
-        return characteristics.size;
+        return skills.size;
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -34,8 +34,8 @@ class SkillsRecyclerAdapter(private val characteristics: ArrayList<Skill>) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.cName?.text = characteristics[position].name.toString();
-        holder.cCount?.text = characteristics[position].count.toString();
+        holder.cName?.text = skills[position].name.toString();
+        holder.cCount?.text = skills[position].count.toString();
 
     }
 
