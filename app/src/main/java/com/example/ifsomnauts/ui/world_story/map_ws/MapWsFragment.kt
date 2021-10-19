@@ -20,13 +20,11 @@ class MapWsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = ViewModelProvider(this).get(MapWsViewModel::class.java)
+
         return inflater.inflate(R.layout.map_ws_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MapWsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }

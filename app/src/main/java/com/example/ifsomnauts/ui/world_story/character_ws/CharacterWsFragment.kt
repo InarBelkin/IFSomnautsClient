@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ifsomnauts.R
+import com.example.ifsomnauts.additional.CharacteristicRecyclerAdapter
+import com.example.ifsomnauts.additional.SkillsRecyclerAdapter
 import com.example.ifsomnauts.databinding.CharacterWsFragmentBinding
 import com.example.ifsomnauts.databinding.FragmentHomeBinding
 
@@ -29,13 +32,26 @@ class CharacterWsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.character_ws_fragment, container, false);
+        _binding =
+            DataBindingUtil.inflate(inflater, R.layout.character_ws_fragment, container, false);
         viewModel = ViewModelProvider(requireActivity()).get(CharacterWsViewModel::class.java);
         binding.viewmodel = viewModel;
 
-
-
-
+        binding.CharacterisicsRecycler.layoutManager = object :
+            LinearLayoutManager(requireContext()) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
+        binding.CharacterisicsRecycler.adapter =
+            CharacteristicRecyclerAdapter(viewModel.pers.value?.characteristics!!);
+        binding.skillsRecycler.layoutManager = object : LinearLayoutManager(requireContext()) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
+        binding.skillsRecycler.adapter =
+            SkillsRecyclerAdapter(viewModel.pers.value?.skills!!);//TODO следить за изменением этих значений вьюмодели
         return binding.root;
     }
 
@@ -44,9 +60,6 @@ class CharacterWsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
-
 
 
 }

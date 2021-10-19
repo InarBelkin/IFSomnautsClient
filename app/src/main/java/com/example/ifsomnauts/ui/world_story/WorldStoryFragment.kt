@@ -12,10 +12,6 @@ import com.google.android.material.tabs.TabLayout
 
 class WorldStoryFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = WorldStoryFragment()
-    }
-
     private lateinit var viewModel: WorldStoryViewModel
     private var _binding: WorldStoryFragmentBinding? = null
     private val binding get() = _binding!!
@@ -24,7 +20,7 @@ class WorldStoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModel = ViewModelProvider(this).get(WorldStoryViewModel::class.java)
         _binding = WorldStoryFragmentBinding.inflate(inflater, container, false);
 

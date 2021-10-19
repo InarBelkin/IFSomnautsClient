@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewmodel"
+            type="com.example.ifsomnauts.ui.world_story.map_ws.MapWsViewModel" />
 
     </data>
 
