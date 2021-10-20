@@ -11,7 +11,6 @@ import com.example.ifsomnauts.ui.world_story.map_ws.MapWsFragment
 class FragmentWsAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle,
-    val changeCallback: (Int) -> Unit
 ) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
@@ -21,11 +20,7 @@ class FragmentWsAdapter(
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            1 -> {
-                val mf = MapWsFragment();
-                mf.changeCallback = changeCallback;
-                return mf;
-            }
+            1 -> MapWsFragment();
             2 -> EncounterWsFragment()
             else -> CharacterWsFragment()
         }

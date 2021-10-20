@@ -11,7 +11,39 @@ class CharacterRepository {
         sk1.name = "красноречие"
 
         val char = Character();
-        char.skills = ArrayList(listOf<Skill>(sk1, Skill(), Skill(), Skill(), Skill()));
+        char.skills = ArrayList(
+            listOf<Skill>(
+                sk1,
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+               sk1,
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                Skill(),
+                sk1
+
+            )
+        );
         val ch1 = Characteristic();
         ch1.name = "Опыт";
         ch1.count = 3F;
@@ -19,6 +51,15 @@ class CharacterRepository {
         char.characteristics = ArrayList(
             listOf<Characteristic>(
                 ch1,
+                Characteristic(),
+                Characteristic(),
+                Characteristic(),
+                Characteristic(),
+                Characteristic(),
+                Characteristic(),
+                Characteristic(),
+                Characteristic(),
+                Characteristic(),
                 Characteristic(),
                 Characteristic(),
                 Characteristic(),

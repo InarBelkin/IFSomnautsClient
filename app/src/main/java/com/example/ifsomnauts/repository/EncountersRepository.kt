@@ -1,6 +1,7 @@
 package com.example.ifsomnauts.repository
 
 import com.example.ifsomnauts.models.ShortEncounter
+import com.example.ifsomnauts.models.dialog.Replica
 
 class EncountersRepository {
     public fun getAllShortEncounters(): ArrayList<ShortEncounter>{
@@ -9,8 +10,48 @@ class EncountersRepository {
         val enc3 = ShortEncounter("id964","Загадочный незнакомец")
         val encounters = ArrayList(listOf(enc1,enc2, enc3
             , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3
-            , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 ));
+            , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3 , enc3, enc1 ));
         return encounters;
+    }
+
+    fun getEncounterLastReplicas(encounterId:String):ArrayList<Replica>{
+        val replicas = ArrayList<Replica>(listOf(Replica("Встреча", "Вы видите седовласого старика с посохом, греющегося у костра." +
+                "Он жестом приглашает вас присоединиться к нему"),
+        Replica("Степан","Кто вы?"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечает"),
+        Replica("Встреча","Старик ничего не отвечаетff"),
+        ));
+        return replicas;
     }
 }
 

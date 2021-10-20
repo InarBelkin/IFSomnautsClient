@@ -38,18 +38,20 @@ class CharacterWsFragment : Fragment() {
         binding.viewmodel = viewModel;
 
         binding.CharacterisicsRecycler.layoutManager = object :
-            LinearLayoutManager(requireContext()) {
-            override fun canScrollVertically(): Boolean {
-                return false
-            }
+                LinearLayoutManager(requireContext()) {
+                override fun canScrollVertically(): Boolean {
+                    return false
+                }
         }
         binding.CharacterisicsRecycler.adapter =
             CharacteristicRecyclerAdapter(viewModel.pers.value?.characteristics!!);
-        binding.skillsRecycler.layoutManager = object : LinearLayoutManager(requireContext()) {
-            override fun canScrollVertically(): Boolean {
-                return false
-            }
-        }
+        binding.skillsRecycler.layoutManager = LinearLayoutManager(requireContext());
+
+//            object : LinearLayoutManager(requireContext()) {
+//            override fun canScrollVertically(): Boolean {
+//                return false
+//            }
+//        }
         binding.skillsRecycler.adapter =
             SkillsRecyclerAdapter(viewModel.pers.value?.skills!!);//TODO следить за изменением этих значений вьюмодели
         return binding.root;

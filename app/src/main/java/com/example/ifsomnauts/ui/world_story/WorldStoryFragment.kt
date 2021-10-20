@@ -21,11 +21,11 @@ class WorldStoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this).get(WorldStoryViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(WorldStoryViewModel::class.java)
         _binding = WorldStoryFragmentBinding.inflate(inflater, container, false);
 
         val fm = childFragmentManager;
-        val adapter = FragmentWsAdapter(fm, lifecycle) { a -> this.setCurrentPage(a) };
+        val adapter = FragmentWsAdapter(fm, lifecycle);
         binding.ViewPagerWs.isUserInputEnabled = false;
         binding.ViewPagerWs.adapter = adapter;
 
@@ -40,6 +40,7 @@ class WorldStoryFragment : Fragment() {
 
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
+        viewModel.changeCallback = { a -> this.setCurrentPage(a) }
 
         binding.ViewPagerWs.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
@@ -50,11 +51,11 @@ class WorldStoryFragment : Fragment() {
 
         })
 
-        var method = { a:Int->setCurrentPage(a) }
+
         return binding.root;
     }
 
-    public fun setCurrentPage(number:Int){
+    public fun setCurrentPage(number: Int) {
         binding.ViewPagerWs.currentItem = number;
     }
 

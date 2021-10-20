@@ -7,34 +7,40 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ifsomnauts.R
+import com.example.ifsomnauts.additional.ReplicaAdapter
 import com.example.ifsomnauts.databinding.EncounterWsFragmentBinding
 
 class EncounterWsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = EncounterWsFragment()
-    }
 
     private lateinit var viewModel: EncounterWsViewModel
-    private lateinit var binding:EncounterWsFragmentBinding
+    private var _binding: EncounterWsFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.encounter_ws_fragment, container, false);
-
-
+        _binding =
+            DataBindingUtil.inflate(inflater, R.layout.encounter_ws_fragment, container, false);
+        viewModel = ViewModelProvider(requireActivity()).get(EncounterWsViewModel::class.java)
+        binding.replicasRecycler.layoutManager = object :
+            LinearLayoutManager(requireContext()) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
+        binding.replicasRecycler.adapter = ReplicaAdapter(viewModel.currentReplicas.value!!);
+        binding.encounterScroll.post { binding.encounterScroll.fullScroll(View.FOCUS_DOWN) }
 
 
         return binding.root;
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(EncounterWsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//    }
 }

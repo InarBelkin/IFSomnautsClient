@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginVertical="3dp">
+
+    <TextView
+        android:id="@+id/replica_speaker"
+        android:text="Speaker:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/design_default_color_secondary"
+        android:shadowColor="@color/black"
+        android:shadowDx="-1"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        />
+
+    <TextView
+        android:id="@+id/characteristic_count"
+        android:text="Текст adsf  das asdf fasd ;asd ;ldfs a dfas  dfasdfas  dfas dfjas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"/>
+</LinearLayout>

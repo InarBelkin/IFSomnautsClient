@@ -6,4 +6,5 @@ import com.example.ifsomnauts.repository.EncountersRepository
 
 class MapWsViewModel : ViewModel() {
     var shortEncounters = MutableLiveData( EncountersRepository().getAllShortEncounters());
+    public var changeCallback: ((Int) -> Unit)? = null;
 }

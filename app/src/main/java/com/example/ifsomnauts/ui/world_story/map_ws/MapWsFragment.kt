@@ -8,17 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ifsomnauts.MainActivity
 import com.example.ifsomnauts.R
 import com.example.ifsomnauts.additional.ShortEncounterRecyclerAdapter
 import com.example.ifsomnauts.databinding.MapWsFragmentBinding
+import com.example.ifsomnauts.ui.world_story.WorldStoryViewModel
 
 class MapWsFragment : Fragment() {
 
-    public lateinit var changeCallback: (Int)->Unit;
 
-   private var _binding: MapWsFragmentBinding? = null;
 
-    private val binding get()= _binding!!
+
+    private var _binding: MapWsFragmentBinding? = null;
+
+    private val binding get() = _binding!!
 
     private lateinit var viewModel: MapWsViewModel
 
@@ -30,6 +33,7 @@ class MapWsFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.map_ws_fragment, container, false);
 
         viewModel = ViewModelProvider(requireActivity()).get(MapWsViewModel::class.java);
+        val viewModelWS = ViewModelProvider(requireActivity()).get(WorldStoryViewModel::class.java)
         binding.viewmodel = viewModel;
 
         binding.shortEncountersRecycler.layoutManager = object :
@@ -39,12 +43,19 @@ class MapWsFragment : Fragment() {
             }
         }
 
+
+
+
         binding.shortEncountersRecycler.adapter =
-            ShortEncounterRecyclerAdapter(viewModel.shortEncounters.value!!, changeCallback);
+            ShortEncounterRecyclerAdapter(viewModel.shortEncounters.value!!, viewModelWS.changeCallback!!);
 
         return binding.root;
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+    }
 
 
     override fun onDestroyView() {
