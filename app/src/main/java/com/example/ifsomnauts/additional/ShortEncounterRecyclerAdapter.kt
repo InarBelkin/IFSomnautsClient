@@ -1,19 +1,16 @@
 package com.example.ifsomnauts.additional
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ifsomnauts.R
 import com.example.ifsomnauts.models.ShortEncounter
-import com.example.ifsomnauts.models.Skill
 
 
 class ShortEncounterRecyclerAdapter(
-    private val characteristics: ArrayList<ShortEncounter>,
+    private val encounters: ArrayList<ShortEncounter>,
     private val changePageCallback: (Int) -> Unit
 ) :
     RecyclerView.Adapter<ShortEncounterRecyclerAdapter.MyViewHolder>() {
@@ -29,7 +26,7 @@ class ShortEncounterRecyclerAdapter(
     }
 
     override fun getItemCount(): Int {
-        return characteristics.size;
+        return encounters.size;
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -40,7 +37,7 @@ class ShortEncounterRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.cName?.text = characteristics[position].name.toString();
+        holder.cName?.text = encounters[position].name.toString();
 
         holder.cName?.setOnClickListener {
             changePageCallback(2);

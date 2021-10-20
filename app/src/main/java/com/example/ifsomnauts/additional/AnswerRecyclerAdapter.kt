@@ -6,37 +6,35 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ifsomnauts.R
-import com.example.ifsomnauts.models.dialog.Replica
+import com.example.ifsomnauts.models.dialog.Answer
 
 
-class ReplicaAdapter(private val replicas: ArrayList<Replica>) :
-    RecyclerView.Adapter<ReplicaAdapter.MyViewHolder>() {
+class AnswerRecyclerAdapter(private val answers: ArrayList<Answer>) :
+    RecyclerView.Adapter<AnswerRecyclerAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var speakerTv: TextView? = null
-        var phraseTv: TextView? = null
+        var phrase: TextView? = null
 
         init {
-            speakerTv = itemView.findViewById(R.id.replica_speaker)
-            phraseTv = itemView.findViewById(R.id.characteristic_count);
+          phrase = itemView.findViewById(R.id.answer_phrase)
         }
 
     }
 
     override fun getItemCount(): Int {
-        return replicas.size;
+        return answers.size;
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.replica_layout, parent, false)
+                .inflate(R.layout.answer_layout, parent, false)
         return MyViewHolder(itemView);
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.speakerTv?.text = replicas[position].speaker + ":";
-        holder.phraseTv?.text = replicas[position].phrase;
+        holder.phrase?.text = answers[position].phrase;
+
     }
 
 

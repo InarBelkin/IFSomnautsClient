@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ifsomnauts.R
+import com.example.ifsomnauts.additional.AnswerRecyclerAdapter
 import com.example.ifsomnauts.additional.ReplicaAdapter
 import com.example.ifsomnauts.databinding.EncounterWsFragmentBinding
 
@@ -33,8 +34,15 @@ class EncounterWsFragment : Fragment() {
             }
         }
         binding.replicasRecycler.adapter = ReplicaAdapter(viewModel.currentReplicas.value!!);
-        binding.encounterScroll.post { binding.encounterScroll.fullScroll(View.FOCUS_DOWN) }
+        binding.answersRecycler.layoutManager = object :
+            LinearLayoutManager(requireContext()) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
+        binding.answersRecycler.adapter = AnswerRecyclerAdapter(viewModel.currentAnswers.value!!)
 
+        binding.encounterScroll.post { binding.encounterScroll.fullScroll(View.FOCUS_DOWN) }
 
         return binding.root;
     }

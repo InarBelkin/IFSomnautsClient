@@ -6,5 +6,6 @@ import com.example.ifsomnauts.repository.EncountersRepository
 
 class EncounterWsViewModel : ViewModel() {
     var currentReplicas = MutableLiveData(EncountersRepository().getEncounterLastReplicas("0"));
+    var currentAnswers = MutableLiveData(EncountersRepository().getCurrentAnswers());
 
 }

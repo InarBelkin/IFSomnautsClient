@@ -23,7 +23,20 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/replicas_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/answers_recycler"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/answers_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
