@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ws_navigation"
+    app:startDestination="@id/characterWsFragment2">
+    <fragment
+        android:id="@+id/characterWsFragment2"
+        android:name="com.example.ifsomnauts.ui.world_story.character_ws.CharacterWsFragment"
+        android:label="CharacterWsFragment"
+        tools:layout="@layout/character_ws_fragment" />
+
+
+
+    <fragment
+        android:id="@+id/mapWsFragment"
+        android:name="com.example.ifsomnauts.ui.world_story.map_ws.MapWsFragment"
+        android:label="MapWsFragment"
+        tools:layout="@layout/map_ws_fragment" />
+    <fragment
+        android:id="@+id/encounterWsFragment"
+        tools:layout="@layout/encounter_ws_fragment"
+        android:name="com.example.ifsomnauts.ui.world_story.encounter_ws.EncounterWsFragment"
+        android:label="EncounterWsFragment" />
+
+    <action
+        android:id="@+id/action_global_characterWsFragment2"
+        app:destination="@id/characterWsFragment2"
+        app:popUpTo="@id/characterWsFragment2"
+        app:popUpToInclusive="true"/>
+    <action
+        android:id="@+id/action_global_mapWsFragment"
+        app:destination="@id/mapWsFragment"
+        app:popUpTo="@id/mapWsFragment"
+        app:popUpToInclusive="true"/>
+    <action
+        android:id="@+id/action_global_encounterWsFragment"
+
+        app:destination="@id/encounterWsFragment"
+        app:popUpTo="@id/encounterWsFragment"
+        app:popUpToInclusive="true"/>
+
+</navigation>
