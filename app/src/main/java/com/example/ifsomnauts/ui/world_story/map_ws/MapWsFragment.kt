@@ -47,7 +47,7 @@ class MapWsFragment : Fragment() {
 
 
         binding.shortEncountersRecycler.adapter =
-            ShortEncounterRecyclerAdapter(viewModel.shortEncounters.value!!, viewModelWS.changeCallback!!);
+            ShortEncounterRecyclerAdapter(viewModel.shortEncounters.value!!);
 
         return binding.root;
     }

@@ -21,7 +21,12 @@
         android:id="@+id/encounterWsFragment"
         tools:layout="@layout/encounter_ws_fragment"
         android:name="com.example.ifsomnauts.ui.world_story.encounter_ws.EncounterWsFragment"
-        android:label="EncounterWsFragment" />
+        android:label="EncounterWsFragment" >
+        <argument
+            android:name="encounterId"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
 
     <action
         android:id="@+id/action_global_characterWsFragment2"

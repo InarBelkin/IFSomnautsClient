@@ -53,19 +53,6 @@ class WorldStoryFragment : Fragment() {
 
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
-        viewModel.changeCallback = { a -> this.setCurrentPage(a) }
-
-//        binding.ViewPagerWs.registerOnPageChangeCallback(object :
-//            ViewPager2.OnPageChangeCallback() {
-//            override fun onPageSelected(position: Int) {
-//                super.onPageSelected(position)
-//                binding.tabLayoutWs.selectTab(binding.tabLayoutWs.getTabAt(position));
-//            }
-//
-//        })
-
-
-
 
        host.navController
             .addOnDestinationChangedListener { navController, navDestination, bundle ->
@@ -82,9 +69,6 @@ class WorldStoryFragment : Fragment() {
         return binding.root;
     }
 
-    public fun setCurrentPage(number: Int) {
-
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,5 +1,7 @@
 package com.example.ifsomnauts
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home,
             ), drawerLayout
         )
+
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

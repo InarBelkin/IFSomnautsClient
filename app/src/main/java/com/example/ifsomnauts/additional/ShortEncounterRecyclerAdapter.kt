@@ -10,8 +10,7 @@ import com.example.ifsomnauts.models.ShortEncounter
 
 
 class ShortEncounterRecyclerAdapter(
-    private val encounters: ArrayList<ShortEncounter>,
-    private val changePageCallback: (Int) -> Unit
+    private val encounters: ArrayList<ShortEncounter>
 ) :
     RecyclerView.Adapter<ShortEncounterRecyclerAdapter.MyViewHolder>() {
 
@@ -40,7 +39,7 @@ class ShortEncounterRecyclerAdapter(
         holder.cName?.text = encounters[position].name.toString();
 
         holder.cName?.setOnClickListener {
-            changePageCallback(2);
+
 //            val text = "Пора покормить кота!"
 //            val duration = Toast.LENGTH_SHORT
 //
