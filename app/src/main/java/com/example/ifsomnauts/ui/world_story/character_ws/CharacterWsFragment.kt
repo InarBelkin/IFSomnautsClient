@@ -35,18 +35,25 @@ class CharacterWsFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.character_ws_fragment, container, false);
         viewModel = ViewModelProvider(requireActivity()).get(CharacterWsViewModel::class.java);
         binding.viewmodel = viewModel;
+        binding.lifecycleOwner = viewLifecycleOwner;
 
         binding.CharacterisicsRecycler.layoutManager = object :
-                LinearLayoutManager(requireContext()) {
-                override fun canScrollVertically(): Boolean {
-                    return false
-                }
+            LinearLayoutManager(requireContext()) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
         }
         binding.CharacterisicsRecycler.adapter =
             CharacteristicRecyclerAdapter(viewModel.character.value?.characteristics!!);
+
         binding.skillsRecycler.layoutManager = LinearLayoutManager(requireContext());
         binding.skillsRecycler.adapter =
-            SkillsRecyclerAdapter(viewModel.character.value?.skills!!);//TODO следить за изменением этих значений вьюмодели
+            SkillsRecyclerAdapter(viewModel.character.value?.skills!!);       //TODO следить за изменением этих значений вьюмодели
+
+
+        viewModel.character.observe(viewLifecycleOwner,{
+            binding.textView2.text = it.name;
+        })
         return binding.root;
     }
 

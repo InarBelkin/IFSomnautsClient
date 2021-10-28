@@ -35,6 +35,7 @@ class MapWsFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(MapWsViewModel::class.java);
         val viewModelWS = ViewModelProvider(requireActivity()).get(WorldStoryViewModel::class.java)
         binding.viewmodel = viewModel;
+        binding.lifecycleOwner = viewLifecycleOwner;
 
         binding.shortEncountersRecycler.layoutManager = object :
             LinearLayoutManager(requireContext()) {

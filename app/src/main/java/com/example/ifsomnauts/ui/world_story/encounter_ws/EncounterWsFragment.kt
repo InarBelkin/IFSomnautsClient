@@ -27,6 +27,8 @@ class EncounterWsFragment : Fragment() {
         _binding =
             DataBindingUtil.inflate(inflater, R.layout.encounter_ws_fragment, container, false);
         viewModel = ViewModelProvider(requireActivity()).get(EncounterWsViewModel::class.java)
+
+        binding.lifecycleOwner = viewLifecycleOwner;
         binding.replicasRecycler.layoutManager = object :
             LinearLayoutManager(requireContext()) {
             override fun canScrollVertically(): Boolean {
