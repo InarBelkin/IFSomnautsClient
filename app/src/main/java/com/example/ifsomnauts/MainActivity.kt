@@ -18,6 +18,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.ifsomnauts.databinding.ActivityMainBinding
+import com.example.ifsomnauts.repository.connection.RequestSingleton
 
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         //setSupportActionBar(binding.appBarMain.toolbar)
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home,
             ), drawerLayout
         )
+
 
         navView.setupWithNavController(navController)
     }

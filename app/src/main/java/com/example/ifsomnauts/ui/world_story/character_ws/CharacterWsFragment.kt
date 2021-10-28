@@ -46,12 +46,6 @@ class CharacterWsFragment : Fragment() {
         binding.CharacterisicsRecycler.adapter =
             CharacteristicRecyclerAdapter(viewModel.pers.value?.characteristics!!);
         binding.skillsRecycler.layoutManager = LinearLayoutManager(requireContext());
-
-//            object : LinearLayoutManager(requireContext()) {
-//            override fun canScrollVertically(): Boolean {
-//                return false
-//            }
-//        }
         binding.skillsRecycler.adapter =
             SkillsRecyclerAdapter(viewModel.pers.value?.skills!!);//TODO следить за изменением этих значений вьюмодели
         return binding.root;

@@ -1,9 +1,12 @@
 package com.example.ifsomnauts.repository
 
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.ifsomnauts.models.Character
 import com.example.ifsomnauts.models.Characteristic
 import com.example.ifsomnauts.models.Skill
+import com.example.ifsomnauts.repository.connection.RequestSingleton
 
 class CharacterRepository {
 
@@ -73,11 +76,21 @@ class CharacterRepository {
                 Characteristic(),
             )
         );
-
+        getCharacterTest();
         return char;
     }
 
     fun getCharacterTest(){
+        val url = RequestSingleton.url+"character";
+        
+        val request  = JsonObjectRequest(Request.Method.GET, url, null,
+            {response->
+                val r = response;
+
+            },
+            {error->})
+
+        RequestSingleton.getInstance().addToRequestQueue(request);
 
 
 
