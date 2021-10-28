@@ -12,7 +12,6 @@ import com.example.ifsomnauts.R
 import com.example.ifsomnauts.additional.CharacteristicRecyclerAdapter
 import com.example.ifsomnauts.additional.SkillsRecyclerAdapter
 import com.example.ifsomnauts.databinding.CharacterWsFragmentBinding
-import com.example.ifsomnauts.databinding.FragmentHomeBinding
 
 class CharacterWsFragment : Fragment() {
 
@@ -44,10 +43,10 @@ class CharacterWsFragment : Fragment() {
                 }
         }
         binding.CharacterisicsRecycler.adapter =
-            CharacteristicRecyclerAdapter(viewModel.pers.value?.characteristics!!);
+            CharacteristicRecyclerAdapter(viewModel.character.value?.characteristics!!);
         binding.skillsRecycler.layoutManager = LinearLayoutManager(requireContext());
         binding.skillsRecycler.adapter =
-            SkillsRecyclerAdapter(viewModel.pers.value?.skills!!);//TODO следить за изменением этих значений вьюмодели
+            SkillsRecyclerAdapter(viewModel.character.value?.skills!!);//TODO следить за изменением этих значений вьюмодели
         return binding.root;
     }
 
