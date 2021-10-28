@@ -1,5 +1,6 @@
 package com.example.ifsomnauts.repository
 
+import com.android.volley.toolbox.Volley
 import com.example.ifsomnauts.models.Character
 import com.example.ifsomnauts.models.Characteristic
 import com.example.ifsomnauts.models.Skill
@@ -75,4 +76,15 @@ class CharacterRepository {
 
         return char;
     }
+
+    fun getCharacterTest(){
+
+
+
+
+
+
+    }
+
+
 }

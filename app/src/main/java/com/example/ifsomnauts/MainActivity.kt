@@ -13,6 +13,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.ifsomnauts.databinding.ActivityMainBinding
 
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,7 +47,6 @@ class MainActivity : AppCompatActivity() {
             ), drawerLayout
         )
 
-        //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 

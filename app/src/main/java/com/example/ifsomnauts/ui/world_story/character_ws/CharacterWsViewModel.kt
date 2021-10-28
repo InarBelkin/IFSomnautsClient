@@ -1,4 +1,6 @@
 package com.example.ifsomnauts.ui.world_story.character_ws
+
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.ifsomnauts.models.Character
