@@ -76,7 +76,7 @@ class CharacterRepository {
                 Characteristic(),
             )
         );
-        getCharacterTest();
+        //getCharacterTest();
         return char;
     }
 
@@ -86,7 +86,6 @@ class CharacterRepository {
         val request  = JsonObjectRequest(Request.Method.GET, url, null,
             {response->
                 val r = response;
-
             },
             {error->})
 
