@@ -43,16 +43,20 @@ class CharacterWsFragment : Fragment() {
                 return false
             }
         }
-        binding.CharacterisicsRecycler.adapter =
-            CharacteristicRecyclerAdapter(viewModel.character.value?.characteristics!!);
+        binding.skillsRecycler.layoutManager = object :
+            LinearLayoutManager(requireContext()) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
+        //TODO следить за изменением этих значений вьюмодели
 
-        binding.skillsRecycler.layoutManager = LinearLayoutManager(requireContext());
-        binding.skillsRecycler.adapter =
-            SkillsRecyclerAdapter(viewModel.character.value?.skills!!);       //TODO следить за изменением этих значений вьюмодели
 
-
-        viewModel.character.observe(viewLifecycleOwner,{
-            binding.textView2.text = it.name;
+        viewModel.character.observe(viewLifecycleOwner, {
+            binding.CharacterisicsRecycler.adapter =
+                CharacteristicRecyclerAdapter(viewModel.character.value?.characteristics!!);
+            binding.skillsRecycler.adapter =
+                SkillsRecyclerAdapter(viewModel.character.value?.skills!!);
         })
         return binding.root;
     }

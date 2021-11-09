@@ -12,8 +12,6 @@ import java.util.HashMap
 class CharacterWsViewModel() : ViewModel() {
     var character: MutableLiveData<Character> =
         MutableLiveData(CharacterRepository().getCharacter())
-    var charName:MutableLiveData<String> = MutableLiveData("Stepan");
-
 
 
     init {
@@ -30,10 +28,7 @@ class CharacterWsViewModel() : ViewModel() {
             headers,
             {
                 this.character.value = it;
-                this.charName.value = it.name;
-            }, {
-                val a = it;
-            })
+            }, { })
         RequestSingleton.getInstance().addToRequestQueue(request);
     }
 
