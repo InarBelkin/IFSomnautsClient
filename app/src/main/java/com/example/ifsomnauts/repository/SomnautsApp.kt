@@ -2,7 +2,6 @@ package com.example.ifsomnauts.repository
 
 import android.app.Application
 import android.content.Context
-import com.example.ifsomnauts.repository.connection.RequestSingleton
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp()
@@ -11,7 +10,6 @@ class SomnautsApp: Application() {
     override fun onCreate() {
         super.onCreate()
         mInstance = this
-        RequestSingleton.firstGetInstance(this.applicationContext).requestQueue;
 
     }
 

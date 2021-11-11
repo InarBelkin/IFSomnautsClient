@@ -5,11 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.example.ifsomnauts.models.Character
 import com.example.ifsomnauts.models.Hero
 import com.example.ifsomnauts.repository.CharacterRepository
-import com.example.ifsomnauts.repository.connection.GsonRequest
 import com.example.ifsomnauts.repository.connection.NetworkService
-import com.example.ifsomnauts.repository.connection.RequestSingleton
 import retrofit2.Call
-import java.util.HashMap
 import retrofit2.Callback
 import retrofit2.Response
 
