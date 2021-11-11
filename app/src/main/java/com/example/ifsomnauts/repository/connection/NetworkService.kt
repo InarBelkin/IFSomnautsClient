@@ -1,8 +1,11 @@
 package com.example.ifsomnauts.repository.connection
 
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.prefs.Preferences
 
 class NetworkService {
     companion object {
@@ -30,4 +33,5 @@ class NetworkService {
     val account:AccountApi = mRetrofit!!.create(AccountApi::class.java)
 
     var aspCookie: String = ""
+
 }

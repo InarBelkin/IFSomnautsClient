@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
         //setSupportActionBar(binding.appBarMain.toolbar)
 
-
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -39,6 +38,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home,
             ), drawerLayout
         )
+
+
 
 
         navView.setupWithNavController(navController)
