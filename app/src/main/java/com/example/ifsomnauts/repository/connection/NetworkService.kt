@@ -22,8 +22,10 @@ class NetworkService {
             .addConverterFactory(GsonConverterFactory.create()).build();
     }
 
-    public val hero:HeroApi
-    get() {return mRetrofit!!.create(HeroApi::class.java)}
+    val hero:HeroApi = mRetrofit!!.create(HeroApi::class.java)
+    val account:AccountApi = mRetrofit!!.create(AccountApi::class.java)
+
+
 
 
 

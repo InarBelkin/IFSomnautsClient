@@ -29,13 +29,15 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         homeViewModel =
             ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
+        binding.homeViewmodel = homeViewModel;
+        binding.lifecycleOwner = viewLifecycleOwner;
 
 
-
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
         val root: View = binding.root
+
 
         homeViewModel.cat = "changed"
 
