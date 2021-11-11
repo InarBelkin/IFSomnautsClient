@@ -3,10 +3,15 @@ package com.example.ifsomnauts.ui.world_story.character_ws
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.ifsomnauts.models.Character
+import com.example.ifsomnauts.models.Hero
 import com.example.ifsomnauts.repository.CharacterRepository
 import com.example.ifsomnauts.repository.connection.GsonRequest
+import com.example.ifsomnauts.repository.connection.NetworkService
 import com.example.ifsomnauts.repository.connection.RequestSingleton
+import retrofit2.Call
 import java.util.HashMap
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class CharacterWsViewModel() : ViewModel() {
@@ -15,7 +20,8 @@ class CharacterWsViewModel() : ViewModel() {
 
 
     init {
-        updCharacter();
+        //updCharacter();
+        testChar();
     }
 
     fun updCharacter() {
@@ -30,6 +36,22 @@ class CharacterWsViewModel() : ViewModel() {
                 this.character.value = it;
             }, { })
         RequestSingleton.getInstance().addToRequestQueue(request);
+
+
+    }
+
+    fun testChar() {
+        NetworkService.Instance.hero.getCurrentHero().enqueue(object : Callback<Hero>{
+            override fun onResponse(call: Call<Hero>, response: Response<Hero>) {
+                var hero = response.body();
+            }
+            override fun onFailure(call: Call<Hero>, t: Throwable) {
+
+            }
+
+
+        });
+
     }
 
 

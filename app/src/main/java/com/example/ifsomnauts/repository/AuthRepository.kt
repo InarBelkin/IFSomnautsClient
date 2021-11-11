@@ -6,5 +6,6 @@ import javax.inject.Singleton
 
 
 class AuthRepository @Inject constructor() {
+
     var user = "def"
 }
