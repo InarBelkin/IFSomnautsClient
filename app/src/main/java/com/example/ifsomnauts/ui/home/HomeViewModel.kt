@@ -51,7 +51,8 @@ class HomeViewModel @Inject constructor(repository: AuthRepository) : ViewModel(
     }
 
     public fun IsAuth(){
-        NetworkService.Instance.account.isAuth().enqueue(object : Callback<IsAuthDto>{
+        val cookie = NetworkService.Instance.aspCookie;
+        NetworkService.Instance.account.isAuth(cookie).enqueue(object : Callback<IsAuthDto>{
             override fun onResponse(call: Call<IsAuthDto>, response: Response<IsAuthDto>) {
                var isAuth = response.body();
             }

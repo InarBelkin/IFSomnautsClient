@@ -24,21 +24,6 @@ class CharacterWsViewModel() : ViewModel() {
         testChar();
     }
 
-    fun updCharacter() {
-        val url = RequestSingleton.url + "character";
-        val headers: MutableMap<String, String> = HashMap()
-        headers["Content-Type"] = "application/json"
-        val request = GsonRequest<Character>(
-            url,
-            Character::class.java,
-            headers,
-            {
-                this.character.value = it;
-            }, { })
-        RequestSingleton.getInstance().addToRequestQueue(request);
-
-
-    }
 
     fun testChar() {
         NetworkService.Instance.hero.getCurrentHero().enqueue(object : Callback<Hero>{

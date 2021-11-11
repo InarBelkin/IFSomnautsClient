@@ -1,5 +1,6 @@
 package com.example.ifsomnauts.repository.connection
 
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -18,15 +19,15 @@ class NetworkService {
     }
 
     init {
-        mRetrofit = Retrofit.Builder().baseUrl(Base_URL)
+        val okHttpClient = OkHttpClient().newBuilder();
+        okHttpClient.interceptors().add(CookiesInterceptor());
+
+        mRetrofit = Retrofit.Builder().baseUrl(Base_URL).client(okHttpClient.build())
             .addConverterFactory(GsonConverterFactory.create()).build();
     }
 
     val hero:HeroApi = mRetrofit!!.create(HeroApi::class.java)
     val account:AccountApi = mRetrofit!!.create(AccountApi::class.java)
 
-
-
-
-
+    var aspCookie: String = ""
 }
