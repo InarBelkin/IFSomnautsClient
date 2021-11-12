@@ -47,7 +47,7 @@ class HomeViewModel @Inject constructor(repository: AuthRepository) : ViewModel(
                 if(answer!=null){
                     message.value = answer!!.message;
                     if(answer!!.isSuccess){
-                        var user = answer!!.user!!;
+                        val user = answer!!.user!!;
                         AuthRepository.user.value = user;
                     }
                 }
@@ -64,7 +64,8 @@ class HomeViewModel @Inject constructor(repository: AuthRepository) : ViewModel(
     }
 
     public fun IsAuth(){
-        val cookie = NetworkService.Instance.aspCookie;
+
+        val cookie:String = AuthRepository.authCookie.value?:"";
         NetworkService.Instance.account.isAuth(cookie).enqueue(object : Callback<IsAuthDto>{
             override fun onResponse(call: Call<IsAuthDto>, response: Response<IsAuthDto>) {
                var isAuth = response.body();

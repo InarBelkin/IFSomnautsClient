@@ -9,9 +9,18 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.example.ifsomnauts.databinding.ActivityMainBinding
+import com.example.ifsomnauts.models.account.IsAuthDto
+import com.example.ifsomnauts.models.account.userDto
+import com.example.ifsomnauts.repository.AuthRepository
+import com.example.ifsomnauts.repository.connection.NetworkService
 
 import dagger.hilt.android.AndroidEntryPoint
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.prefs.Preferences
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -39,10 +48,41 @@ class MainActivity : AppCompatActivity() {
             ), drawerLayout
         )
 
-
+        strangeThings();
 
 
         navView.setupWithNavController(navController)
+    }
+
+    fun strangeThings(){
+        var pref = getPreferences(MODE_PRIVATE);
+        var aspCookie = pref.getString(getString(R.string.cookieName),"");
+        AuthRepository.authCookie.value = aspCookie;
+
+        val cookie:String = AuthRepository.authCookie.value?:"";
+        NetworkService.Instance.account.isAuth(cookie).enqueue(object : Callback<IsAuthDto> {
+            override fun onResponse(call: Call<IsAuthDto>, response: Response<IsAuthDto>) {
+                val auth = response.body();
+                if(auth!=null && auth.isAuth){
+                    AuthRepository.user.value = auth.user;
+                }
+                else{
+                    AuthRepository.user.value = null;
+                }
+            }
+            override fun onFailure(call: Call<IsAuthDto>, t: Throwable) {
+            }
+        })
+
+        AuthRepository.authCookie.observe(this, {
+            val prefs = getPreferences(MODE_PRIVATE);
+            val ed = prefs.edit()
+            ed.putString(getString(R.string.cookieName),it);
+            ed.apply();
+        });
+
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

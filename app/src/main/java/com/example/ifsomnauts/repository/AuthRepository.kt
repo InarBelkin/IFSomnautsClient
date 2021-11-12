@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 class AuthRepository @Inject constructor() {
     companion object {
-        var user: MutableLiveData<userDto> = MutableLiveData();
-        var authCookie: MutableLiveData<String> = MutableLiveData();
+        var user: MutableLiveData<userDto?> = MutableLiveData();
+        var authCookie: MutableLiveData<String?> = MutableLiveData();
     }
 }
