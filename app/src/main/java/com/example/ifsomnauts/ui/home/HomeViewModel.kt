@@ -27,25 +27,38 @@ class HomeViewModel @Inject constructor(repository: AuthRepository) : ViewModel(
 
     var cat: String = "def"
 
+    var userName: String = "";
+    var password: String = "";
+    var message: MutableLiveData<String> = MutableLiveData("");
+
     public fun Login(){
 
         val login = userLogin();
-        login.userName = "Kotander2"
-        login.password = "Kotander25#"
+        login.userName = userName;
+        login.password = password;
         login.rememberMe = true;
+        var answer:registerAnswer? = null;
         NetworkService.Instance.account.login(login).enqueue(object : Callback<registerAnswer>{
             override fun onResponse(
                 call: Call<registerAnswer>,
                 response: Response<registerAnswer>
             ) {
-                var resp = response.body();
+                answer = response.body();
+                if(answer!=null){
+                    message.value = answer!!.message;
+                    if(answer!!.isSuccess){
+                        var user = answer!!.user!!;
+                        AuthRepository.user.value = user;
+                    }
+                }
+                else message.value = "Не удалось залогиниться";
             }
 
             override fun onFailure(call: Call<registerAnswer>, t: Throwable) {
-
+                message.value = "Ошибка соединения или что-то такое";
             }
-
         });
+
 
 
     }

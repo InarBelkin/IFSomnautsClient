@@ -32,6 +32,5 @@ class NetworkService {
     val hero:HeroApi = mRetrofit!!.create(HeroApi::class.java)
     val account:AccountApi = mRetrofit!!.create(AccountApi::class.java)
 
-    var aspCookie: String = ""
 
 }

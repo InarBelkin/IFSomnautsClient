@@ -4,4 +4,5 @@ class registerAnswer {
     var message:String = "";
     var isSuccess:Boolean = false;
     var errors: ArrayList<identityError> = ArrayList();
+    var user: userDto? = null;
 }

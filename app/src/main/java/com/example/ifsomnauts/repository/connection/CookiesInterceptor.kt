@@ -1,5 +1,6 @@
 package com.example.ifsomnauts.repository.connection
 
+import com.example.ifsomnauts.repository.AuthRepository
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -10,7 +11,9 @@ class CookiesInterceptor : Interceptor {
         val aspCookie = originalResponse.header("Set-Cookie");
 
         if (aspCookie?.isNotEmpty() == true) {
-            NetworkService.Instance.aspCookie = aspCookie;
+
+            if (AuthRepository.authCookie.value != aspCookie)
+                AuthRepository.authCookie.value = aspCookie;
         }
         return originalResponse;
     }

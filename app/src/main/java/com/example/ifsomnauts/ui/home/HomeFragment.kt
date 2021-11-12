@@ -1,10 +1,13 @@
 package com.example.ifsomnauts.ui.home
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 
 import androidx.fragment.app.Fragment
@@ -40,6 +43,13 @@ class HomeFragment : Fragment() {
 
 
         homeViewModel.cat = "changed"
+
+
+
+        binding.editTextPersonName.doOnTextChanged() { text, start, before, count ->
+            var a = text;
+            var b = start;
+        }
 
 
 
