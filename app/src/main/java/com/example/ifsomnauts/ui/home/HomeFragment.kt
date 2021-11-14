@@ -41,10 +41,7 @@ class HomeFragment : Fragment() {
 
         val root: View = binding.root
 
-
         homeViewModel.cat = "changed"
-
-
 
         binding.editTextPersonName.doOnTextChanged() { text, start, before, count ->
             var a = text;
