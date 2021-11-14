@@ -31,54 +31,7 @@ class HomeViewModel @Inject constructor(repository: AuthRepository) : ViewModel(
     var password: String = "";
     var message: MutableLiveData<String> = MutableLiveData("");
 
-    public fun Login(){
 
-        val login = userLogin();
-        login.userName = userName;
-        login.password = password;
-        login.rememberMe = true;
-        var answer:registerAnswer? = null;
-        NetworkService.Instance.account.login(login).enqueue(object : Callback<registerAnswer>{
-            override fun onResponse(
-                call: Call<registerAnswer>,
-                response: Response<registerAnswer>
-            ) {
-                answer = response.body();
-                if(answer!=null){
-                    message.value = answer!!.message;
-                    if(answer!!.isSuccess){
-                        val user = answer!!.user!!;
-                        AuthRepository.user.value = user;
-                    }
-                }
-                else message.value = "Не удалось залогиниться";
-            }
-
-            override fun onFailure(call: Call<registerAnswer>, t: Throwable) {
-                message.value = "Ошибка соединения или что-то такое";
-            }
-        });
-
-
-
-    }
-
-    public fun IsAuth(){
-
-        val cookie:String = AuthRepository.authCookie.value?:"";
-        NetworkService.Instance.account.isAuth(cookie).enqueue(object : Callback<IsAuthDto>{
-            override fun onResponse(call: Call<IsAuthDto>, response: Response<IsAuthDto>) {
-               var isAuth = response.body();
-            }
-
-            override fun onFailure(call: Call<IsAuthDto>, t: Throwable) {
-
-            }
-
-
-        })
-
-    }
 
 
 

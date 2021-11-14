@@ -1,21 +1,21 @@
 package com.example.ifsomnauts.ui.home
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.ifsomnauts.R
 import com.example.ifsomnauts.databinding.FragmentHomeBinding
+import com.example.ifsomnauts.repository.AuthRepository
+import com.firebase.ui.auth.AuthUI
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.concurrent.fixedRateTimer
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -38,19 +38,20 @@ class HomeFragment : Fragment() {
         binding.homeViewmodel = homeViewModel;
         binding.lifecycleOwner = viewLifecycleOwner;
 
+        binding.buttonOtherpage.setOnClickListener {
+            //findNavController().popBackStack();
+            findNavController().navigate(R.id.worldStoryFragment);
+        }
 
-        val root: View = binding.root
-
-        homeViewModel.cat = "changed"
-
-        binding.editTextPersonName.doOnTextChanged() { text, start, before, count ->
-            var a = text;
-            var b = start;
+        binding.LogoutButton.setOnClickListener {
+            AuthUI.getInstance().signOut(requireContext())
+                .addOnCompleteListener {
+                    AuthRepository.user.value = FirebaseAuth.getInstance().currentUser;
+                }
         }
 
 
-
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

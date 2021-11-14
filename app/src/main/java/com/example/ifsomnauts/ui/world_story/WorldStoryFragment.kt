@@ -10,10 +10,13 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ifsomnauts.R
 import com.example.ifsomnauts.databinding.WorldStoryFragmentBinding
+import com.example.ifsomnauts.repository.AuthRepository
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.AuthResult
 
 class WorldStoryFragment : Fragment() {
 
@@ -28,7 +31,8 @@ class WorldStoryFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(requireActivity()).get(WorldStoryViewModel::class.java)
         _binding = WorldStoryFragmentBinding.inflate(inflater, container, false);
-        val host = childFragmentManager.findFragmentById(R.id.fragmentContainerView)as NavHostFragment;
+        val host =
+            childFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment;
 
 //        val fm = childFragmentManager;
 //        val adapter = FragmentWsAdapter(fm, lifecycle);
@@ -45,16 +49,14 @@ class WorldStoryFragment : Fragment() {
                     }
                     host.navController
                         .navigate(actionString);
-
                 };
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
-
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-       host.navController
+        host.navController
             .addOnDestinationChangedListener { navController, navDestination, bundle ->
                 val position = when (navDestination.id) {
                     R.id.characterWsFragment2 -> 0;
@@ -65,8 +67,21 @@ class WorldStoryFragment : Fragment() {
                 binding.tabLayoutWs.selectTab(binding.tabLayoutWs.getTabAt(position));
             }
 
-
         return binding.root;
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        AuthRepository.user.observe(viewLifecycleOwner,{user->
+            if(user !=null){
+                //Установить имя на боковой панели.
+            }
+            else{
+//                findNavController().popBackStack();
+                findNavController().navigate(R.id.action_global_loginFragment);
+            }
+        })
+
     }
 
 

@@ -12,8 +12,7 @@ class CookiesInterceptor : Interceptor {
 
         if (aspCookie?.isNotEmpty() == true) {
 
-            if (AuthRepository.authCookie.value != aspCookie)
-                AuthRepository.authCookie.postValue(aspCookie);
+
         }
         return originalResponse;
     }

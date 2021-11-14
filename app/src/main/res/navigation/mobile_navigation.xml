@@ -16,4 +16,14 @@
         android:name="com.example.ifsomnauts.ui.world_story.WorldStoryFragment"
         android:label="world_story_fragment"
         tools:layout="@layout/world_story_fragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.ifsomnauts.ui.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" />
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@id/loginFragment"
+        app:popUpToInclusive="true"/>
 </navigation>
