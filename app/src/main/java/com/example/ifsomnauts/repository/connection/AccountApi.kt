@@ -15,6 +15,6 @@ interface AccountApi {
 //
 //    @POST("/account/isAuth")
 //    fun isAuth(@Header("Cookie") aspCookie:String) : Call<IsAuthDto>
-    @GET("/api/account")
+    @GET("/api/test/auth")
     fun sendToken(@Header("Authorization") bearer:String):Call<Void>
 }
